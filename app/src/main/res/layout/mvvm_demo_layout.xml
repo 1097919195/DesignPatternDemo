@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="userViewModel"
+            type="com.magic.wangdongliang.designpatterndemo.mvvm.viewmodel.MvvmUserViewModel" />
+        <variable
+            name="handlers"
+            type="com.magic.wangdongliang.designpatterndemo.mvvm.view.MvvmDemoActivity" />
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/first_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:text="@{userViewModel.firstName}"
+            tools:text="First name: "/>
+
+        <TextView
+            android:id="@+id/last_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:layout_marginTop="30dp"
+            android:text="@{userViewModel.lastName}"
+            tools:text="Last name: "/>
+
+        <TextView
+            android:id="@+id/is_adult_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:layout_marginTop="30dp"
+            android:text="Is adult: Yes"
+            android:visibility="@{userViewModel.isAdult ? View.VISIBLE : View.GONE}" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="加载数据"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center_horizontal"
+            android:onClick="@{handlers.onClickLoadData}"/>
+    </LinearLayout>
+</layout>
